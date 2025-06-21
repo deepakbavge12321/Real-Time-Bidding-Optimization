@@ -1,8 +1,5 @@
 # Optimal Real-Time Bidding for Display Advertising
 
-**Role:** Student Developer  
-**Context:** GitHub project for internship portfolio
-
 ---
 
 ## 🚀 Project Overview
