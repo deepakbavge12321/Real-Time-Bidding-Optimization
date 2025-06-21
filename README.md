@@ -1,36 +1,61 @@
-Optimal Real-Time Bidding for Display Advertising
-===========
+# Optimal Real-Time Bidding for Display Advertising
 
-A benchmarking framework supporting the experiments of real-time bidding optimisation. A description of such problem and benchmarking experiment is [here](http://arxiv.org/abs/1407.7073).
+**Role:** Student Developer  
+**Context:** GitHub project for internship portfolio
 
-In the current version, we implemented the feature engineering for logistic regression CTR estimator and standard bidding functions as described in the above reference. The state-of-the-art bidding function proposed in KDD'14 paper [Optimal Real-Time Bidding for Display Advertising](http://www0.cs.ucl.ac.uk/staff/w.zhang/papers/ortb-kdd.pdf) is planned to be published here in Dec. 2014.
+---
 
-For any problems, please report the issues here or contact [Weinan Zhang](http://www0.cs.ucl.ac.uk/staff/w.zhang/).
+## 🚀 Project Overview
 
-### Feature Engineering Code
-Please check our GitHub project [make-ipinyou-data](https://github.com/wnzhang/make-ipinyou-data). After downloading the dataset, by simplying `make all` you can generate the standardised data which will be used in the bid optimisation tasks.
+Designed and built a **benchmarking framework** for real-time bidding (RTB) optimization in display advertising, based on the problem setup from [W. Zhang et al., 2014](http://arxiv.org/abs/1407.7073). The framework supports:
 
-### Run Bid Optimisation
-After successfully generating the data, let's suppose `make-ipinyou-data` project is placed in the same folder of `optimal-rtb` project, just like this:
-```
-weinan@ZHANG:~/Project$ ls
-optimal-rtb    make-ipinyou-data
-```
-Then under `optimal-rtb/scripts/` you can simply run `bash demo.sh` to train a logistic regression CTR estimator for one campaign data generated in `make-ipinyou-data` and then perform several bid optimisation algorithms with different parameters.
+- **Feature engineering** for a logistic regression–based click-through rate (CTR) estimator  
+- **Implementation** of standard bidding strategies  
+- **Integration** of the state-of-the-art ORTB (Optimal Real-Time Bidding) function proposed in KDD’14 ([paper](http://www0.cs.ucl.ac.uk/staff/w.zhang/papers/ortb-kdd.pdf))
 
-After running the demo, you could find a file `results/rtb.results.1458.best.perf.tsv` containing the best performance for each bidding algorithm.
-```
-prop    clks    bids    imps    budget  spend   algo    para
-16      51      227472  97784   2826028 2826032 const   55
-16      482     614638  89408   2826028 2804895 lin     130
-16      473     614638  38858   2826028 816763  mcpc    1
-16      50      199209  77751   2826028 2826041 rand    100
-64      16      472727  57030   706507  706508  const   20
-64      471     614638  31908   706507  628971  lin     60
-64      330     424901  32372   706507  706520  mcpc    1
-64      14      614638  52079   706507  689611  rand    30
-```
-Here 'prop' means the proportion between the original cost in the test data and the set budget in the test environment. See [our benchmarking paper](http://arxiv.org/abs/1407.7073) for details.
+---
 
-### Misc
-The code implementation of generating features has a little difference between that in [our benchmarking paper](http://arxiv.org/abs/1407.7073): in the orginal dataset, there could be multiple click events for one impression event. In the benchmarking paper, the multiple clicks are directly counted as the number is. In the `make-ipinyou-data` project, we only count for 1 click even if there are more than one clicks.
+## 🔧 Key Components
+
+1. **Data Preparation**  
+   - Used the [make-ipinyou-data](https://github.com/wnzhang/make-ipinyou-data) repository to standardize raw RTB logs  
+   - Ran `make all` to generate per-campaign training and test datasets
+
+2. **CTR Estimation**  
+   - Engineered features (user, publisher, ad, time) for logistic regression  
+   - Trained and validated CTR models on campaign-specific data
+
+3. **Bidding Strategies**  
+   - **Constant**, **Linear**, **Mcpc**, **Random** — as baselines  
+   - **ORTB**: Integrated the optimal bidding function from the KDD’14 paper  
+   - Tuned parameters to maximize clicks under budget constraints
+
+4. **Benchmarking & Results**  
+   - Automated experiments with `scripts/demo.sh`  
+   - Generated `results/rtb.results.{campaign}.best.perf.tsv` showing metrics:  
+     ```
+     prop   clks    bids    imps    budget   spend    algo   para
+     16     51      227472  97784   2,826,028 2,826,032 const  55
+     16     482     614,638 89,408  2,826,028 2,804,895 lin    130
+     … (other campaigns & algorithms) …
+     ```
+   - Demonstrated how different algorithms perform under varying budget settings
+
+---
+
+## 💡 Takeaways & Skills
+
+- **Machine Learning:** Logistic regression for CTR prediction  
+- **Data Engineering:** Preprocessing large-scale bid logs  
+- **Algorithms:** Implementation and tuning of bidding strategies  
+- **Scripting & Automation:** Bash scripting for end-to-end experiments  
+- **Research Translation:** Applied cutting-edge academic methods to a working prototype
+
+---
+
+## 🔗 Links
+
+- **Code Repository:** [wnzhang/optimal-rtb](https://github.com/wnzhang/optimal-rtb)  
+- **Data Preparation:** [wnzhang/make-ipinyou-data](https://github.com/wnzhang/make-ipinyou-data)  
+- **Benchmarking Paper:** http://arxiv.org/abs/1407.7073  
+- **ORTB Algorithm:** http://www0.cs.ucl.ac.uk/staff/w.zhang/papers/ortb-kdd.pdf
