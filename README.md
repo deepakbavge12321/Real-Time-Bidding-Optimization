@@ -16,7 +16,7 @@ Designed and built a **benchmarking framework** for real-time bidding (RTB) opti
 
 1. **Data Preparation**  
    - Used the [make-ipinyou-data](https://github.com/wnzhang/make-ipinyou-data) repository to standardize raw RTB logs  
-   - Ran `make all` to generate per-campaign training and test datasets
+   - Ran `make all` to generate per-campaign training/test datasets
 
 2. **CTR Estimation**  
    - Engineered features (user, publisher, ad, time) for logistic regression  
@@ -36,7 +36,7 @@ Designed and built a **benchmarking framework** for real-time bidding (RTB) opti
      16     482     614,638 89,408  2,826,028 2,804,895 lin    130
      … (other campaigns & algorithms) …
      ```
-   - Demonstrated how different algorithms perform under varying budget settings
+   - Demonstrated how different algorithms perform under varying budget settings 
 
 ---
 
